@@ -1,0 +1,108 @@
+<html ng-app="swimApp">
+<head>
+	<title>Swim</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" type="text/css" href="css/materialize.min.css" media="screen,projection">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/smoothness/jquery-ui.css" />
+</head>
+
+<body>
+
+	<script type="text/javascript" src="js/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="js/materialize.min.js"></script>
+	<script type="text/javascript" src="js/functions.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+	<!-- Include Angular --> 
+	<script src="node_modules/angular/angular.js"></script>
+	<script src="node_modules/angular-route/angular-route.js"></script>
+	<!-- Include other JS Files -->
+	<script src="js/controllers/controllers.js"></script>
+	<!-- <script src="js/functions.js"></script> -->
+	<!-- Angular Material -->
+    <script src="node_modules/angular-aria/angular-aria.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.js"></script>
+    <script src="node_modules/angular-material/angular-material.js"></script>
+
+
+	<!-- Navbar -->
+	<div class="navbar-fixed">
+	  <nav>
+	    <div class="nav-wrapper light-blue darken-4">
+	      <a href="#!" class="brand-logo" style="padding-left:5%;">Swim</a>
+	      <ul class="right hide-on-med-and-down">
+	      	<li><a href="sass.html"><i class="material-icons">search</i></a></li>
+	        <li><a href="test.html">Better</a></li>
+	        <li><a href="test2.html">Than</a></li>
+	        <li class="active"><a href="test3.html">Bela</a></li>
+	      </ul>
+	    </div>
+	  </nav>
+	</div>
+	<!-- End NavBar -->
+
+	<!-- Search Bar -->
+ 	<div class="container searchBox">
+	  	<div class="row">  		
+	  		<i class="medium material-icons">search</i>
+	  		<img src="content/paymentus.jpg">
+	    	<div class="input-field col s6 ui-widget">    	
+	      		<input placeholder="CIF Parser"  type="text" class="validate" id="searchBox">
+	      		<label class="active" for="searchBox" >Search</label>
+	    	</div>
+	  	</div>
+
+	  	<div>
+	  		<p class="howto">Search a task to find Development Info</p>
+	  	</div>
+  	</div>
+	<!-- End Search Bar -->
+
+	<!-- Templated-->
+	<div ng-view></div>
+
+	
+	<script type="text/javascript">
+				
+		$( document ).ready(function(){
+			// Initialize collapse button
+			$(".button-collapse").sideNav();
+			$('ul.tabs').tabs();	
+			$('.materialboxed').materialbox();
+		});
+		
+		$(function() {
+			var availableTags = [
+		    	"CIF Parser",
+		    	"Posting File",
+		    	"Report Writer",
+		    	"Ebill",
+		    	"IVR",
+		    	"BI",
+		    	"OMS",
+		    	"ECM",
+		    	"Mobile",
+		    	"Notification",
+		    	"Account Update",
+		    	"Database Update",
+		    	"UI Customization",
+		    	"Payment Blocking",
+		    	"Update Partial",
+		    	"Zero Out",
+		    	"Validators",
+		    	"Simulator"
+		 	];	
+		 	$( "#searchBox" ).autocomplete({
+		   		source: availableTags,
+		   		messages: {
+		     		noResults: '',
+		     		results: function() {}
+		  		}
+		  	});
+		});	
+	</script>
+
+</body>
+</html>
