@@ -34,9 +34,9 @@
 	      <a href="#!" class="brand-logo" style="padding-left:5%;">Swim</a>
 	      <ul class="right hide-on-med-and-down">
 	      	<li><a href="sass.html"><i class="material-icons">search</i></a></li>
-	        <li><a href="test.html">Better</a></li>
-	        <li><a href="test2.html">Than</a></li>
-	        <li class="active"><a href="test3.html">Bela</a></li>
+	        <li><a href="test.html">Confluence</a></li>
+	        <li><a href="test2.html">Other</a></li>
+	        <li class="active"><a href="test3.html">Links</a></li>
 	      </ul>
 	    </div>
 	  </nav>
@@ -45,9 +45,11 @@
 
 	<!-- Search Bar -->
  	<div class="container searchBox">
-	  	<div class="row">  		
+	  	<div class="row">
+	  		<a class="waves-effect" id="swimSearchBox" onclick="check();">
 	  		<i class="medium material-icons">search</i>
 	  		<img src="content/paymentus.jpg">
+	  		</a>
 	    	<div class="input-field col s6 ui-widget">    	
 	      		<input placeholder="CIF Parser"  type="text" class="validate" id="searchBox">
 	      		<label class="active" for="searchBox" >Search</label>
@@ -65,7 +67,11 @@
 
 	
 	<script type="text/javascript">
-				
+		function check(){
+			console.log("test");
+			window.location.href =  "#/tasks/account-update";
+		}		
+
 		$( document ).ready(function(){
 			// Initialize collapse button
 			$(".button-collapse").sideNav();
