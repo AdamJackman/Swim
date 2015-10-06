@@ -36,11 +36,11 @@ var swimCtrls = angular.module('swimCtrls', []);
 
 swimCtrls.controller('mainCtrl', ['$scope', '$http', '$routeParams',
 	function($scope, $http, $routeParams){
-		$scope.greeting = "Hola!";
+		$scope.greeting = "Place";
 	}]);
 
 swimCtrls.controller('homeCtrl', ['$scope', '$http', '$window',
 	function($scope, $http, $window){
-		$scope.greeting = "mola!";
+		$scope.greeting = "Holder";
 
 	}]);

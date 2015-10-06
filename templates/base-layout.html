@@ -1,0 +1,16 @@
+<!-- Header -->
+Place Header Here
+<!-- Modal Template-->
+<div class="row">
+	  <a class="modal-trigger" href="#modal1"><div class="col s6 card quadbox grey lighten-4 hoverable"><p class="intro">Introduction</p></div></a>
+      <a class="modal-trigger" href="#modal2"><div class="col s6 card quadbox grey lighten-4 hoverable"><p class="intro">Testing</p></div></a>
+      <a class="modal-trigger" href="#modal3"><div class="col s6 card quadbox grey lighten-4 hoverable"><p class="intro">Coding Snippets</p></div></a>
+      <a class="modal-trigger" href="#modal4"><div class="col s6 card quadbox grey lighten-4 hoverable"><p class="intro">Database Snippets</p></div></a>
+    </div>
+<div class="row">
+<script type="text/javascript">
+  $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+  });
+ </script>

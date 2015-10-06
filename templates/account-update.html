@@ -1,12 +1,111 @@
-<div>TEST ME</div>
+<div ng-include src="'templates/base-layout.html'"></div>
 
-BEGIN 
-  PSEC_CONFIG_OPERATIONS.SETCLIENTOPTION('8084828478', 'PAPER_SUPPRESSION_SUPPORTED', 'true');
-  PSEC_CONFIG_OPERATIONS.SETCLIENTOPTION('8084828478', 'SUPPORTED_ACCOUNT_NOTIF_TYPES', 'PAPER_SUPPRESSION');
-  PSEC_CONFIG_OPERATIONS.SETCLIENTOPTION('8084828478', 'ACCOUNT_UPDATE_ADAPTER_CLASS', 'com.paymentus.paybox.web.otp.custom.trtn.TRTNAccountUpdateAdapter');
-  PSEC_CONFIG_OPERATIONS.SETCLIENTOPTION('8084828478', 'RT_ACCOUNT_UPDATE_URL', 'https://ivrdirectortest.cityofthornton.net/director.asmx');
-  PSEC_CONFIG_OPERATIONS.SETCLIENTOPTION('8084828478', 'ADV_FULL_KEY', 'VHJ1ZSxUcnVl-A5u1o1/BqZg=');
-  PSEC_CONFIG_OPERATIONS.SETCLIENTOPTION('8084828478', 'ADV_PORTAL_ID', '0');
-  commit;
-END;
-/
+<!-- Customized page content -->
+<!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a class=" modal-action modal-close waves-effect waves-green btn-flat">Done</a>
+    </div>
+  </div>
+
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a class=" modal-action modal-close waves-effect waves-green btn-flat">Done</a>
+    </div>
+  </div>
+
+    <div id="modal3" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a class=" modal-action modal-close waves-effect waves-green btn-flat">Done</a>
+    </div>
+  </div>
+
+    <div id="modal4" class="modal">
+    <div class="modal-content">
+
+    <div class="col s12 blue lighten-4 card">
+    	<div class="card-content black-text">
+              <span class="card-title">Card Title</span>
+              <p>BEGIN</p>
+			  <p>PSEC_CONFIG_OPERATIONS.SETCLIENTOPTION('8084828478', 'PAPER_SUPPRESSION_SUPPORTED', 'true');</p>
+			  <p>PSEC_CONFIG_OPERATIONS.SETCLIENTOPTION('8084828478', 'SUPPORTED_ACCOUNT_NOTIF_TYPES', 'PAPER_SUPPRESSION');</p>
+			  <p>PSEC_CONFIG_OPERATIONS.SETCLIENTOPTION('8084828478', 'ACCOUNT_UPDATE_ADAPTER_CLASS', 'com.paymentus.paybox.web.otp.custom.trtn.TRTNAccountUpdateAdapter');</p>
+			  <p>PSEC_CONFIG_OPERATIONS.SETCLIENTOPTION('8084828478', 'RT_ACCOUNT_UPDATE_URL', 'https://ivrdirectortest.cityofthornton.net/director.asmx');</p>
+			  <p>PSEC_CONFIG_OPERATIONS.SETCLIENTOPTION('8084828478', 'ADV_FULL_KEY', 'VHJ1ZSxUcnVl-A5u1o1/BqZg=');</p>
+			  <p>PSEC_CONFIG_OPERATIONS.SETCLIENTOPTION('8084828478', 'ADV_PORTAL_ID', '0');</p>
+			  <p>commit;</p>
+			<p>END;</p>
+			<p>/</p>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+      <a class=" modal-action modal-close waves-effect waves-green btn-flat">Done</a>
+    </div>
+  
+	</div>
+	</div>
+
+
+
+
+
+
+
+<!-- PlayGround-->
+    <div class="col s12 blue lighten-3 card">
+    	<div class="card-content white-text">
+	    	<h3 class="white-text">Coding Snippets</h1>    		
+	    	<div class="card-panel blue lighten-3">
+	          <span class="black-text flow-text">I am a very simple card. I am good at containing small bits of information.
+	          I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+	          </span>
+	        </div>
+    	</div>
+    </div>
+    <div class="col s12 blue lighten-2 card">
+    	<span class="card-title">Database</span>
+    	<div class="card-panel blue lighten-2">
+          <span class="black-text flow-text">
+          	<p>BEGIN</p>
+			  <p>PSEC_CONFIG_OPERATIONS.SETCLIENTOPTION('8084828478', 'PAPER_SUPPRESSION_SUPPORTED', 'true');</p>
+			  <p>PSEC_CONFIG_OPERATIONS.SETCLIENTOPTION('8084828478', 'SUPPORTED_ACCOUNT_NOTIF_TYPES', 'PAPER_SUPPRESSION');</p>
+			  <p>PSEC_CONFIG_OPERATIONS.SETCLIENTOPTION('8084828478', 'ACCOUNT_UPDATE_ADAPTER_CLASS', 'com.paymentus.paybox.web.otp.custom.trtn.TRTNAccountUpdateAdapter');</p>
+			  <p>PSEC_CONFIG_OPERATIONS.SETCLIENTOPTION('8084828478', 'RT_ACCOUNT_UPDATE_URL', 'https://ivrdirectortest.cityofthornton.net/director.asmx');</p>
+			  <p>PSEC_CONFIG_OPERATIONS.SETCLIENTOPTION('8084828478', 'ADV_FULL_KEY', 'VHJ1ZSxUcnVl-A5u1o1/BqZg=');</p>
+			  <p>PSEC_CONFIG_OPERATIONS.SETCLIENTOPTION('8084828478', 'ADV_PORTAL_ID', '0');</p>
+			  <p>commit;</p>
+			<p>END;</p>
+			<p>/</p>
+          </span>
+        </div>
+    </div>
+    <div class="col s12 blue lighten-1 card-panel">
+    	<h3 class="white-text">Testing</h1>
+    	<div class="card-panel blue lighten-1">
+          <span class="black-text flow-text">I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+          </span>
+        </div>    	
+    </div>
+</div>
+
+
+
+
+
+  
+
+
