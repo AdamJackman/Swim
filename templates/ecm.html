@@ -1,0 +1,68 @@
+/* PRKW ECM SETUP  */ 
+
+DECLARE
+  clientCode           varchar2 (32)     := '8080827587';
+  ShortName            varchar2 (32)     := 'PRKW'; 
+  clientDescription    varchar2 (66)     := 'Park Water';
+  emailFrom            varchar2 (256)    := 'notifications@paymentus.com';
+  messageCode          varchar2 (32);
+  messageDesc          varchar2 (256);
+
+
+BEGIN
+
+  psec_config_operations.setclientoption(clientCode, 'ECM_REPORT_SUPPORTED', 'true');
+	psec_config_operations.setclientoption(clientCode, 'CM_AUDIENCE_FILE_PARSER', 'com.paymentus.paybox.custom.batch.prkw.PRKWAudienceParser');
+  psec_config_operations.setclientoption(clientCode, 'CM_AUDIENCE_FILE_VALIDATOR', 'com.paymentus.paybox.custom.batch.prkw.PRKWAudienceValidator', 'VALIDATOR');
+  psec_config_operations.setclientoption(clientCode, 'IVR_PAY_NOW_ENABLED', 'true');
+  psec_config_operations.setclientoption(clientCode, 'CM_IVR_OUTBOUND_CALLERID', '"Park Water Company"');
+  
+	psec_config_operations.setactionmessage(clientCode, 'all', 'audience.format.sample', 'Exc,Collection Status,Customer #,Account #,Service,Account Status,A/R Balance,Name,Apt#,Street#,Street# Sufix,Street Prefix,Street Name,Street Suffix,Phone #,Phone Type,Meter #,Account Type,Cycle,Book,Field Worker Code,Last Bill Due,Last Notice,Last Notice Amount,Active Arrangement,Credit Rating,Field Action Resolution,Aging 1,Aging 2,Aging 3,Aging 4,Aging 5,Comments,Remote Number,Meter Reading Notes', 'en');
+
+
+-- Pre-Hanger
+  insert into pcm_message
+              (client_code, message_code, message_description, email_template_path, 
+               sms_template_path, ivr_template_path, email_subject, email_from, created_by, modified_by)
+       values (clientCode, 'pre-hanger', 'PRE-HANGER', '', 
+               '', 'dynamic-campaign-ivr.ftl', 'Your bill is due', 
+               emailFrom, clientCode, clientCode);
+       
+  insert into pcm_campaign 
+              (campaign_id, client_code, campaign_description, effective_date, email_channel, sms_channel, ivr_channel, 
+               message_code, quick_type_code, read_only, created_by, modified_by) 
+       values (pcm_campaign_seq.nextval, clientCode, 'Pre-Hanger', sysdate, 'N', 'N', 'Y', 
+               'pre-hanger', 'Pre-Hanger', 'Y', clientCode, clientCode);
+
+ 	psec_config_operations.setactionmessage(clientCode, 'outbound-agi-server', 'prehanger.msg', '8080827587/prehanger', 'en');
+	psec_config_operations.setactionmessage(clientCode, 'outbound-agi-server', 'toPayNowSelectOption.msg', '8080827587/toPayNowSelectOptionPRKW', 'en');
+
+
+-- Lock Off
+  insert into pcm_message
+              (client_code, message_code, message_description, email_template_path, 
+               sms_template_path, ivr_template_path, email_subject, email_from, created_by, modified_by)
+       values (clientCode, 'lock_off', 'Lock-Off', '', 
+               '', 'dynamic-campaign-ivr.ftl', 'Your service is scheduled for shut-off', 
+               emailFrom, clientCode, clientCode);
+       
+  insert into pcm_campaign 
+              (campaign_id, client_code, campaign_description, effective_date, email_channel, sms_channel, ivr_channel, 
+               message_code, quick_type_code, read_only, created_by, modified_by) 
+       values (pcm_campaign_seq.nextval, clientCode, 'Pre-Hanger', sysdate, 'N', 'N', 'Y', 
+               'lock_off', 'Lock-Off', 'Y', clientCode, clientCode);
+               
+	psec_config_operations.setactionmessage(clientCode, 'outbound-agi-server', 'lockoffPRKW.msg', '8080827587/lockoffPRWK', 'en');
+
+               
+
+  /** Set up rating for PCM */
+  insert into pcm_cost_config
+              (client_code, client_short_name, client_description, email_cost, email_rate, sms_cost, sms_rate, 
+               ivr_cost, ivr_rate, ACTIVE_FLAG, created_by, modified_by)
+       values (clientCode, ShortName, clientDescription, 0, 0.05, 0, 0.25, 
+               0, 0.15, 'Y', clientCode, clientCode);
+
+
+   commit;
+end;

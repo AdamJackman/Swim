@@ -5,7 +5,7 @@
   "description": "Sink or Swim",
   "scripts": {
     "prestart": "npm install",
-    "start": "http-server -a 0.0.0.0 -p 8000",
+    "start": "http-server -a 0.0.0.0 -p 8001",
 
     "preupdate-webdriver": "npm install",
     "update-webdriver": "webdriver-manager update"

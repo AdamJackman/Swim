@@ -1,0 +1,15 @@
+Set-up a new client:		
+		nano /etc/asterisk/qa.conf
+		add a new line following the present format: change TLA to the client you are working on
+		change the number to a unique 2xx number this is the DNID of the client.
+
+		Set the DNID on your Database
+		PSEC_CONFIG_OPERATIONS.SETCLIENTOPTION('8066878780', 'DNID', '230');
+
+		copy any necessary voice files to the virtual box:
+			scp -r X root@Y:/var/lib/asterisk/sounds/voice-files/
+			Replace X with the directory of voice files that you wish to be copied
+			replace Y with the ip address of the virtual box 
+
+		Go to Java and run TestInboundIvrServer
+		Open 3cx phone and call into the DNID that was just set

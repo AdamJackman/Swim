@@ -1,0 +1,61 @@
+
+- Ebill information is stored inside a custom Bill.java with custom variables you need.
+- Your Bill parser's job is to take the relevent information from the sent cif and place it into the Bill object.
+- The dynamic section of the Bill (the part that holds the variables) is placed in format-bill.ftl 
+- format-bill.ftl uses ${bill.variable} to populate the bill with the variables in the e-bill
+- External_Ebill_extractor: DEFAULT: if bill is a file, Default_Inline: If bill object is used
+
+BEGIN 
+  PSEC_CONFIG_OPERATIONS.SETCLIENTOPTION('8080767767', 'LIABILITY_FILE_PARSER', 'com.paymentus.paybox.custom.batch.plmc.PLMCLiabilityParserBill');
+  PSEC_CONFIG_OPERATIONS.SETCLIENTOPTION('8080767767', 'EXTERNAL_EBILL_EXTRACTOR', 'DEFAULT_INLINE');
+  
+  PSEC_CONFIG_OPERATIONS.SETCLIENTOPTION( '8080767767', 'S3_ACCESS_KEY', '6329415907A8FFEA085F9E676724BD7101FC4935D2CE8E68E1D14CB41DA63A0A');
+  PSEC_CONFIG_OPERATIONS.SETCLIENTOPTION( '8080767767', 'S3_SECRET_KEY', 'C927D49C7CAE22FF4D8DEB759BF5A31DD2A0C24F0FE79C61FC215809B04A346ECA92B62DE0FAD4D7846E3EA5BA217CA191689943DD2778D9AD1F2E92B0BA0DAC');
+  PSEC_CONFIG_OPERATIONS.SETCLIENTOPTION( '8080767767', 'S3_BUCKET', 'paymentus-dev');
+  PSEC_CONFIG_OPERATIONS.SETCLIENTOPTION( '8080767767', 'S3_CRYPT_KEY', '2988F4B3F9074A1D0FE0415A24BD8FA59591BD343B33D92A541C59523647980E');
+  commit;
+END;
+/
+
+Add CSS - JS - images
+    Done through an app.ftl: 
+  CP: customer-portal-war/WEB-INF/ftl/--TLA--/common/app.ftl
+    CSS: added inside the function:
+      <#macro viewBillCss><style></style></#macro>
+    JS: added inside the function:
+      <#macro viewBillJs context=""><script type="text/javascript"></script></#macro>   
+    Images: added inside the directory
+      www/images/plmc/plmc-ebill-logo.jpg
+
+  AD: paybox/etc/billerpaybox-web/--TLA--/common/app.ftl
+    CSS: added inside the function:
+      <#macro billViewCss view><style></style></#macro>
+    JS: added inside the function:
+      <#macro viewBillJs context=""><script type="text/javascript"></script></#macro>   
+    Images: added inside the directory
+      images/plmc/plmc-ebill-logo.jpg
+
+Add the bill (To be placed in the above ftl):
+
+<#-- Add the ability to see the bill -->
+<#macro viewBill account liability view="">
+   <#if !liability.clientData1?has_content && !liability.billImage?has_content>
+        <div class="ebill-display">${Messages["my_bill.noBill.error"]}</div>
+        <!--viewBill: no data -->
+    <#else>
+        <#if liability.billImage?has_content>
+            <#-- Ebill is hosted externally in the cloud -->
+            <#assign inlineTemplate1 = liability.billImage?interpret/> 
+        <#else>
+            <#-- The following line must appear as is without spaces or new line-->
+            <#assign inlineTemplate1 = (liability.clientData1+liability.clientData2+liability.clientData3+liability.clientData4+liability.clientData5+liability.clientData6)?interpret/>
+        </#if>      
+        <#assign DATA_URL = "view-bill-data.action" />
+        <!--viewBill: bill data -->
+        <@inlineTemplate1 />            
+    </#if>
+</#macro>
+
+Reevaluate the bill image src:
+  inside the css for the item:
+    content:url("www/images/plmc/plmc-ebill-logo.jpg");

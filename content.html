@@ -69,7 +69,12 @@
 	<script type="text/javascript">
 		function check(){
 			console.log("test");
-			window.location.href =  "#/tasks/account-update";
+			//Grab the text in the box
+			var pre = $("#searchBox").val();
+			//Mapping to the template
+			var goTo = pre.replace(/\s+/g, '-').toLowerCase();
+			console.log(goTo);
+			window.location.href =  "#/tasks/" + goTo;
 		}		
 
 		$( document ).ready(function(){

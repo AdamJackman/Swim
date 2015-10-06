@@ -1,0 +1,5 @@
+	to use Update Partial instead of Update Full: record.setRetainClientDataFields(true) in the CIF Parser's populateLiabilityRecord function
+	the update partial/full code is found in paymp_liability_obj
+	to override update partial/full: you should make your own paymp_liability_obj (paymp_tla_liability_obj)
+	to use the custom paymp_tla_liability_obj: create a new custom LiabilityRecord (tlaLiabilityRecord) with BASE_TYPE_NAME set to paymp_tla_liability_obj.
+	to use the custom Liability record: In the CIF parser Override initLiabilityRecord and return new tlaLiabilityRecord().

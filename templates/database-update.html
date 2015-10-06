@@ -1,0 +1,13 @@
+Stop Tomcat.
+	In general to update copy and paste the code into a SQL developer and run the code follow these rules:
+		Database should be updated with files in the following order:
+
+			1. Tables 
+				You should use Oracle alter commands here to avoid dropping a table
+			2. Sequences - Insert only those that are new
+			3. Types
+				if the type does not run go to the top and change 'under' to 'force under'
+				if this does not work uncomment the top line 'drop...' and run again
+			4. Packages
+			5. Index
+			6. Inserts 

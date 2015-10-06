@@ -1,0 +1,8 @@
+--simulation script
+declare
+    clientCode VARCHAR2 (32) := TLA('btxu');
+begin
+    PSEC_CONFIG_OPERATIONS.SETCLIENTOPTION(clientCode, 'RT_CIF_SIMULATED', 'true');
+    PSEC_CONFIG_OPERATIONS.SETCLIENTOPTION(clientCode, 'RTP_LOOPBACK_MODE', 'true');
+    commit;
+end;

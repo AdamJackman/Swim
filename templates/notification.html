@@ -1,0 +1,27 @@
+
+	Notifications taken from the database using the getPendingNotification call:
+	they must meet the following criteria to be sent
+
+	header . status code : 
+		Inside the config option NOTIFICATION_STATUS_LIST
+		if this does not exist then: ACCEPTED, CANCELLED, REFUNDED or RETURNED
+
+	header . payment type : 
+		Inside the config option NOTIFICATION_PT_LIST
+		or . all payment types
+
+	notification detail . type
+		notification detail type must be processing
+
+
+First step is to get a sample so that we can see what we need to mimic. 
+	Get a full list of the fields that they expect and how these map from our variables.
+
+	Client conf:
+		    --Support Notifications
+			  PSEC_CONFIG_OPERATIONS.SETCLIENTOPTION('8066848885', 'RTP_NOTIFICATION_SUPPORTED', 'true');
+			  PSEC_CONFIG_OPERATIONS.SETCLIENTOPTION('8066848885', 'PAYMENT_NOTIFICATION_SUPPORTED', 'true');
+			  PSEC_CONFIG_OPERATIONS.SETCLIENTOPTION('8066848885', 'NOTIFICATION_PROCESSOR', 'com.paymentus.paybox.custom.batch.btxu.BTXUNotificationClient');
+			  PSEC_CONFIG_OPERATIONS.SETCLIENTOPTION('8066848885', 'NOTIFICATION_URL', 'http://wstest.btutilities.com/BTUWS_IVR.asmx');
+    
+		  

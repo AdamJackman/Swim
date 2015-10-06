@@ -1,0 +1,13 @@
+Payment blocking is added to the LiabilityRecord.
+	Uses the command record.addPaymentMethodBlock(Type.MC.getCode() , true)
+	A full list of all the types can be found in PaymentMethodConfig.java
+
+
+		block credit:
+			record.addPaymentMethodBlock(Type.MC.getCode(), true);
+			record.addPaymentMethodBlock(Type.VISA.getCode(), true);
+			record.addPaymentMethodBlock(Type.AMEX.getCode(), true);
+			record.addPaymentMethodBlock(Type.DISC.getCode(), true);
+		block cheques:
+			record.addPaymentMethodBlock(Type.CHQ.getCode(), true);
+			record.addPaymentMethodBlock(Type.SAV.getCode(), true);

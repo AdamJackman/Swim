@@ -1,0 +1,19 @@
+Determine CSV or width based.
+	Client MUST send us a Due Date, Account Number and and Amount Due.
+
+--Execution to change the liability loader file and posting file
+	BEGIN
+	  PSEC_CONFIG_OPERATIONS.SETCLIENTOPTION('8080707685', 'LIABILITY_FILE_PARSER', 'com.paymentus.paybox.custom.batch.pflu.PFLULiabilityParser');
+	  commit;
+	END;
+
+	populateLiabilityRecord:
+		Generally getString(); is used to grab a next csv
+		Substring for width based.
+
+
+CIF RT Parser:
+	PSEC_CONFIG_OPERATIONS.SETCLIENTOPTION('8066848885', 'LIABILITY_CLIENT', 'com.paymentus.paybox.custom.batch.btxu.BTXULiabilityClient');
+  	PSEC_CONFIG_OPERATIONS.SETCLIENTOPTION('8066848885', 'RT_CIF_URL', 'http://wstest.btutilities.com/BTUWS_IVR.asmx');
+
+Client MUST send us a Due Date, Account Number and and Amount Due.

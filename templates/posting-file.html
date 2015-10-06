@@ -1,0 +1,26 @@
+PSEC_CONFIG_OPERATIONS.SETCLIENTOPTION('8080707685','RPT_CUSTOM_CLASS','com.paymentus.paybox.custom.batch.pflu.PFLUReportWriter');
+	PSEC_CONFIG_OPERATIONS.SETCLIENTOPTION('8080707685','BATCH_SETTLEMENT_REPORT_FORMAT','CCIN_CUSTOM');
+
+
+	Test with TestSettlementReportWriter
+
+	Access the currentDate during the file creation
+
+		// Access CCIN attributes
+		CCINAttributes ccinAttributes = criteria.getCcinAttributes();
+
+		// Set up date variable
+		currentDate_ = ccinAttributes.getFileCreationDate();
+
+
+	Inside the write method you should first do this:
+
+	// the INCLUDE_CREDIT_AMOUNT feature
+		String transactionType = data.getTransactionType();
+		String statusCode = data.getStatusCode();
+		if (!includeTransaction(transactionType, statusCode)) {
+			return;
+	}
+	
+	Test Settlement Report Writer (F: from, T: to)
+	Test settlement report writer will make a report of all the payments in the paymp_header table that are also within the time frame	
