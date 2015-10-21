@@ -2,7 +2,10 @@ var swimApp = angular.module('swimApp', [
 	'ngRoute',
 	'swimCtrls'
 ]);
-
+//WILDCARD THE PART AFTER TASKS :task
+//THEN PASS THIS INTO THE CONTROLLER INTO SCOPE.
+//USE AN NG INCLUDE TO INCLUDE THE PAGE SPECIFIC MODALS
+//THIS WILL REMOVE THE NEED FOR ALL THESE WHEN STATEMENTS
 swimApp.config(['$routeProvider',
 	function($routeProvider){
 		$routeProvider.
@@ -37,10 +40,13 @@ var swimCtrls = angular.module('swimCtrls', []);
 swimCtrls.controller('mainCtrl', ['$scope', '$http', '$routeParams',
 	function($scope, $http, $routeParams){
 		$scope.greeting = "Place";
+		var spinal = $routeParams.task;
+		//Replace - with space and capitalize the first letters
+		var title = "converted";		
+		$scope.title = title;
 	}]);
 
-swimCtrls.controller('homeCtrl', ['$scope', '$http', '$window',
-	function($scope, $http, $window){
+swimCtrls.controller('homeCtrl', ['$scope', '$http', '$window', '$routeParams',
+	function($scope, $http, $window, $routeParams){
 		$scope.greeting = "Holder";
-
 	}]);

@@ -1,3 +1,63 @@
+<div><!-- Header -->Place Header Here {{title}}</div>
+
+<div ng-include src="'templates/base-layout.html'"></div>
+
+<!-- Customized page content -->
+<!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>CIF Parser</h4>
+      <p>A CIF Parser is a class that converts information from the Client into data in our database</p>
+      <p>The CIF Parser will be called during a batch job it is not part of the web flows.</p>
+      <p>A client uses this batch job to update our database with liabilities. Basically who owes what by what date.</p>
+      <p>CIF Parsers input files (CIFS) are sent to us in a Width Based Format or a Comma Seperated Format</p>
+    </div>
+    <div class="modal-footer">
+      <a class=" modal-action modal-close waves-effect waves-green btn-flat">Done</a>
+    </div>
+  </div>
+
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <h4>CIF Parser - Testing </h4>
+      <p>To Test a CIF Parser we user the Java Class:</p>
+      <p><strong> - TestLiabilityFileLoad</strong></p>
+      
+      <p>You will need a sample file from the biller to test, place the file at the following location:</p>
+      <p><strong> - /paybox/test/com/paymentus/test/paybox/batch/liability/abc/liability-sample.csv</strong></p>
+      <p>replace the abc in this example to the TLA being worked on e.g. abc, btxu, bwwp, etc.</p>
+
+      <p>In this class you should set the client variable to the TLA of the client </p>
+      <p><strong>Run the test class and your output should be in paybox's output folder </strong></p>
+    </div>
+    <div class="modal-footer">
+      <a class=" modal-action modal-close waves-effect waves-green btn-flat">Done</a>
+    </div>
+  </div>
+
+    <div id="modal3" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a class=" modal-action modal-close waves-effect waves-green btn-flat">Done</a>
+    </div>
+  </div>
+
+    <div id="modal4" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a class=" modal-action modal-close waves-effect waves-green btn-flat">Done</a>
+    </div>
+  
+	</div>
+	</div>
+
+
 Determine CSV or width based.
 	Client MUST send us a Due Date, Account Number and and Amount Due.
 
